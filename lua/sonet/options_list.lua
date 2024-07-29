@@ -44,7 +44,8 @@ local optionsList = {
   updatetime=3000,
   writebackup=false,
   signcolumn='yes',
-  background='dark'
+  background='dark',
+  backspace = 'indent,eol,start'
 }
 
 return optionsList

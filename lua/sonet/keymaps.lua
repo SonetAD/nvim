@@ -20,15 +20,18 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 
+--exicute macro saved in a
+keymap("n", "<leader>a", "<S-@>", {desc='Macros a exicute'})
+
 -- Split window
-keymap("n", "<leader>s", "<C-w>s", opts)
-keymap("n", "<leader>v", "<C-w>v", opts)
+keymap("n", "<leader>s", "<C-w>s", {desc='Horizontal window split '})
+keymap("n", "<leader>v", "<C-w>v", {desc='Vertical split '})
 
 -- Better window navigation
-keymap("n", "<leader>h", "<C-w>h", opts)
-keymap("n", "<leader>j", "<C-w>j", opts)
-keymap("n", "<leader>k", "<C-w>k", opts)
-keymap("n", "<leader>l", "<C-w>l", opts)
+keymap("n", "<C-h>", "<C-w>h", {desc='Left Screen '})
+keymap("n", "<C-j>", "<C-w>j", {desc='Screen Down '})
+keymap("n", "<C-k>", "<C-w>k", {desc='Screen Up'})
+keymap("n", "<C-l>", "<C-w>k", {desc='Right ScreenUp'})
 
 --toggle file explorer
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)

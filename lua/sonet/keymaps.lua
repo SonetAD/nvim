@@ -49,6 +49,10 @@ keymap("n", "r", "<C-r>", opts)
 -- search and replace
 keymap("n", "m", ":%s/", opts)
 
+-- delete search highlight
+keymap("n", "<leader>h", ":nohlsearch <cr>", opts)
+--
+
 -- Insert --
 -- Press jj fast to enter
 keymap("i", "jj", "<ESC>", opts)

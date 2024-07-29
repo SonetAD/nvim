@@ -33,32 +33,40 @@ keymap("n", "<C-j>", "<C-w>j", {desc='Screen Down '})
 keymap("n", "<C-k>", "<C-w>k", {desc='Screen Up'})
 keymap("n", "<C-l>", "<C-w>k", {desc='Right ScreenUp'})
 
+--tab section
+keymap("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+keymap("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+keymap("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
+keymap("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
+keymap("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+
+
 --toggle file explorer
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("n", "<leader>e", ":Lex 30<cr>", {desc='toggle file explorer'})
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>",{desc='Next Buffer'})
+keymap("n", "<S-h>", ":bprevious<CR>",{desc='Previous Buffer'})
 
--- Nvigate ot the end of the line
-keymap("n", "9", "<C-$>", opts)
+--Move the cursor end of the line
+keymap("n", "9", "<C-$>", {desc='Move Curson end of the line'})
 
 -- Delete the entire content of the file
-keymap("n", "da", ":%d<cr>", opts)
+keymap("n", "da", ":%d<cr>", {desc='Delete entire file'})
 
 -- redo 
-keymap("n", "r", "<C-r>", opts)
+keymap("n", "r", "<C-r>", {desc='Redo'})
 
 -- search and replace
-keymap("n", "m", ":%s/", opts)
+keymap("n", "m", ":%s/", {desc='Search and replace'})
 
 -- delete search highlight
-keymap("n", "<leader>h", ":nohlsearch <cr>", opts)
+keymap("n", "<leader>h", ":nohlsearch <cr>", {desc='Remove selected highlight'})
 --
 
 -- Insert --
 -- Press jj fast to enter
-keymap("i", "jj", "<ESC>", opts)
+keymap("i", "jj", "<ESC>", {desc='Insert to Normal mode'})
 
 
 -- Visual --
@@ -73,10 +81,10 @@ keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv", {desc='Move Selected Text Down'})
+keymap("x", "K", ":move '<-2<CR>gv-gv", {desc='Move Selected Text Up'})
+keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", {desc='Move Selected Text Down'})
+keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", {desc='Move Selected Text Up'})
 
 
 -- Terminal --

@@ -50,8 +50,8 @@ keymap("n", "<S-l>", ":bnext<CR>",{desc='Next Buffer'})
 keymap("n", "<S-h>", ":bprevious<CR>",{desc='Previous Buffer'})
 
 -- move start and end of the line
-keymap("n", "9", "^", {desc='Move to start of the line'})
-keymap("n", "0", "$", {desc='Move Curson end of the line'})
+keymap("n", "0", "^", {desc='Move to start of the line'})
+keymap("n", "9", "$", {desc='Move Curson end of the line'})
 
 
 -- Delete the entire content of the file

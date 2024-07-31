@@ -49,8 +49,10 @@ keymap("n", "<leader>e", ":Lex 30<cr>", {desc='toggle file explorer'})
 keymap("n", "<S-l>", ":bnext<CR>",{desc='Next Buffer'})
 keymap("n", "<S-h>", ":bprevious<CR>",{desc='Previous Buffer'})
 
---Move the cursor end of the line
-keymap("n", "9", "<C-$>", {desc='Move Curson end of the line'})
+-- move start and end of the line
+keymap("n", "9", "^", {desc='Move to start of the line'})
+keymap("n", "0", "$", {desc='Move Curson end of the line'})
+
 
 -- Delete the entire content of the file
 keymap("n", "da", ":%d<cr>", {desc='Delete entire file'})

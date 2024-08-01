@@ -10,3 +10,4 @@ vim.opt.shortmess:append "c"
 
 vim.cmd("let g:netrw_liststyle = 3")
 
+

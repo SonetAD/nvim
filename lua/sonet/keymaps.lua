@@ -26,7 +26,7 @@ keymap("n", "<leader>a", "<S-@>", {desc='Macros a exicute'})
 -- Split window
 keymap("n", "<leader>s", "<C-w>s", {desc='Horizontal window split '})
 keymap("n", "<leader>v", "<C-w>v", {desc='Vertical split '})
-keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+keymap("n", "<leader>x", "<cmd>close<CR>", { desc = "Close current split" })
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", {desc='Left Screen '})
@@ -96,3 +96,6 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+
+

@@ -1,11 +1,20 @@
---init options
-require("sonet.options")
+if vim.g.vscode then
+	--init keymaps
+	require("sonet.vscode.keymaps")
 
---init keymaps
-require("sonet.keymaps")
+	--init keymaps
+	require("sonet.vscode.options")
+else
+	--
+	--init options
+	require("sonet.options")
 
---init odeium
-require("sonet.codeium_config")
+	--init keymaps
+	require("sonet.keymaps")
 
--- init lazy.nvim
-require("lazy.init")
+	--init odeium
+	require("sonet.codeium_config")
+
+	-- init lazy.nvim
+	require("lazy.init")
+end

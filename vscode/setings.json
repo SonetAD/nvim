@@ -1,0 +1,112 @@
+{
+  // basic setup
+  "editor.accessibilitySupport": "on",
+  "editor.fontSize": 20,
+  "editor.formatOnSave": true,
+  "editor.suggest.insertMode": "replace",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "terminal.integrated.fontSize": 20,
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontLigatures": true,
+  "editor.linkedEditing": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // prettier settings
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleAttributePerLine": true,
+  "prettier.singleQuote": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // neo  vim setup
+
+  "vscode-neovim.compositeKeys": {
+    "jj": {
+      // Use lua to execute any logic
+      "command": "vscode-neovim.lua",
+      "args": [
+        [
+          "local code = require('vscode')",
+          "code.action('vscode-neovim.escape')",
+          "code.action('workbench.action.files.save')"
+        ]
+      ]
+    }
+  },
+
+  // icon theme
+  "workbench.iconTheme": "material-icon-theme",
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 3,
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.3)",
+    "rgba(127,255,127,0.3)",
+    "rgba(255,127,255,0.3)",
+    "rgba(79,236,236,0.3)",
+    "rgba(255,255,64,0.3)",
+    "rgba(127,255,127,0.3)",
+    "rgba(255,127,255,0.3)",
+    "rgba(79,236,236,0.3)"
+  ],
+  // appearance setting
+  "workbench.statusBar.visible": false,
+  "breadcrumbs.enabled": false,
+  "editor.minimap.enabled": false,
+  "workbench.editor.editorActionsLocation": "hidden",
+  "editor.renderControlCharacters": false,
+  "editor.renderWhitespace": "none",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "editor.wordWrap": "on",
+  "codeium.enableSearch": true,
+  "workbench.settings.applyToAllProfiles": [],
+  "workbench.editor.showTabs": "single",
+  // better comment setup
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#fff",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "#FF2D00",
+      "bold": true,
+      "italic": true
+    },
+    {
+      "tag": "?",
+      "color": "#fff",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "#3498DB",
+      "bold": true,
+      "italic": true
+    },
+    {
+      "tag": " ",
+      "color": "#333",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "#ffff00",
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#000",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "#FF8C00",
+      "bold": true,
+      "italic": true
+    },
+    {
+      "tag": "*",
+      "color": "#000",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "#98C379",
+      "bold": true,
+      "italic": true
+    }
+  ],
+  "workbench.colorTheme": "SynthWave '84"
+}

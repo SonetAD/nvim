@@ -12,8 +12,6 @@ else
 	--init keymaps
 	require("sonet.keymaps")
 
-	--init odeium
-	require("sonet.codeium_config")
 
 	-- init lazy.nvim
 	require("lazy.init")

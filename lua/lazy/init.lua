@@ -22,7 +22,7 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.lsp" },
   },
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
     enabled = true,
     notify = false,

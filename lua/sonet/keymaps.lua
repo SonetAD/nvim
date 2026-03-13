@@ -90,6 +90,23 @@ keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", {desc='Move Selected Text Down'})
 keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", {desc='Move Selected Text Up'})
 
 
+-- Comment toggle (Ctrl+/) — smart: line comment in normal, block comment in visual multi-line
+vim.keymap.set("n", "<C-/>", function()
+  require("Comment.api").toggle.linewise.current()
+end, { noremap = true, silent = true, desc = "Toggle line comment" })
+
+vim.keymap.set("x", "<C-/>", function()
+  local start_row = vim.fn.line("v")
+  local end_row   = vim.fn.line(".")
+  local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+  vim.api.nvim_feedkeys(esc, "nx", false)
+  if start_row == end_row then
+    require("Comment.api").toggle.linewise(vim.fn.visualmode())
+  else
+    require("Comment.api").toggle.blockwise(vim.fn.visualmode())
+  end
+end, { noremap = true, silent = true, desc = "Toggle comment (smart)" })
+
 -- Terminal --
 -- Escape from terminal mode
 keymap("t", "<ESC><ESC>", "<C-\\><C-N>", term_opts)

@@ -1,23 +1,15 @@
 return {
-	"akinsho/toggleterm.nvim",
-	version = "*",
-	opts = {
-		open_mapping = [[<c-`>]],
-		direction = "float",
-		size = { width = 0.8, height = 0.8 },
-		terminal = {
-			cmd = "bash",
-		},
-		on_open = function(term)
-			-- Disable all keystrokes in all modes
-			vim.cmd([[noremap <buffer> <silent> * <Nop>]])
-			vim.cmd([[noremap <buffer> <silent> <space> <Nop>]])
-			vim.cmd([[inoremap <buffer> <silent> <expr> ""]])
-			vim.cmd([[vnoremap <buffer> <silent> <expr> ""]])
-			-- Add more keymap disabling as needed
-
-			-- Map essential terminal keys
-			vim.api.nvim_set_keymap("t", "<C-l>", "<esc>:clear<CR>", { noremap = true, silent = true }) -- Clear terminal
-		end,
-	},
+  "akinsho/toggleterm.nvim",
+  version = "*",
+  keys = { { "<leader>t", desc = "Toggle terminal" } },
+  opts = {
+    open_mapping = [[<leader>t]],
+    direction = "float",
+    float_opts = {
+      border = "rounded",
+      width = math.floor(vim.o.columns * 0.85),
+      height = math.floor(vim.o.lines * 0.85),
+    },
+    shell = vim.o.shell,
+  },
 }

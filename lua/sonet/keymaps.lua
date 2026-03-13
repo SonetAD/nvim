@@ -91,11 +91,8 @@ keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", {desc='Move Selected Text Up'})
 
 
 -- Terminal --
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- Escape from terminal mode
+keymap("t", "<ESC><ESC>", "<C-\\><C-N>", term_opts)
 
 
 

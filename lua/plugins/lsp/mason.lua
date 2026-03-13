@@ -44,7 +44,12 @@ return {
 				"isort", -- python formatter
 				"black", -- python formatter
 				"pylint", -- python linter
-				"eslint_d", -- js linter
+				"eslint_d", -- js/ts linter
+				"luacheck", -- lua linter
+				"shellcheck", -- bash/sh linter
+				"markdownlint", -- markdown linter
+				"yamllint", -- yaml linter
+				"stylelint", -- css/scss linter
 			},
 		})
 	end,

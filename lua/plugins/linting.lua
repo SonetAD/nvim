@@ -11,7 +11,29 @@ return {
 			typescriptreact = { "eslint_d" },
 			svelte = { "eslint_d" },
 			python = { "pylint" },
+			lua = { "luacheck" },
+			sh = { "shellcheck" },
+			bash = { "shellcheck" },
+			markdown = { "markdownlint" },
+			yaml = { "yamllint" },
+			css = { "stylelint" },
+			scss = { "stylelint" },
 		}
+
+		-- Only run eslint_d when an eslint config file exists in the project
+		lint.linters.eslint_d.condition = function(ctx)
+			return vim.fs.find({
+				".eslintrc",
+				".eslintrc.js",
+				".eslintrc.cjs",
+				".eslintrc.json",
+				".eslintrc.yaml",
+				".eslintrc.yml",
+				"eslint.config.js",
+				"eslint.config.mjs",
+				"eslint.config.cjs",
+			}, { upward = true, path = ctx.dirname })[1]
+		end
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

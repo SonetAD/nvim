@@ -1,64 +1,143 @@
 return {
-  "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
+  "saghen/blink.cmp",
+  version = "*",
   dependencies = {
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path", -- source for file system paths
     {
       "L3MON4D3/LuaSnip",
-      -- follow latest release.
-      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-      -- install jsregexp (optional!).
+      version = "v2.*",
       build = "make install_jsregexp",
+      dependencies = { "rafamadriz/friendly-snippets" },
     },
-    "saadparwaiz1/cmp_luasnip", -- for autocompletion
-    "rafamadriz/friendly-snippets", -- useful snippets
-    "onsails/lspkind.nvim", -- vs-code like pictograms
   },
-  config = function()
-    local cmp = require("cmp")
-
-    local luasnip = require("luasnip")
-
-    local lspkind = require("lspkind")
-
-    -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-    require("luasnip.loaders.from_vscode").lazy_load()
-
-    cmp.setup({
-      completion = {
-        completeopt = "menu,menuone,preview,noselect",
+  opts = {
+    keymap = {
+      preset = "none",
+      ["<C-Space>"] = { "show", "fallback" },
+      ["<C-e>"] = { "hide" },
+      ["<Tab>"] = { "select_and_accept", "fallback" },
+      ["<C-k>"] = { "select_prev", "fallback" },
+      ["<C-j>"] = { "select_next", "fallback" },
+      ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+    },
+    appearance = {
+      nerd_font_variant = "mono",
+      kind_icons = {
+        Text = "󰉿",
+        Method = "󰆧",
+        Function = "󰊕",
+        Constructor = "",
+        Field = "󰜢",
+        Variable = "󰀫",
+        Class = "󰠱",
+        Interface = "",
+        Module = "",
+        Property = "󰜢",
+        Unit = "󰑭",
+        Value = "󰎠",
+        Enum = "",
+        Keyword = "󰌋",
+        Snippet = "",
+        Color = "󰏘",
+        File = "󰈙",
+        Reference = "󰈇",
+        Folder = "󰉋",
+        EnumMember = "",
+        Constant = "󰏿",
+        Struct = "󰙅",
+        Event = "",
+        Operator = "󰆕",
+        TypeParameter = "",
       },
-      snippet = { -- configure how nvim-cmp interacts with snippet engine
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
+    },
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer" },
+      providers = {
+        lsp = {
+          -- only show LSP items with a score boost, never fall back to low-confidence items
+          min_keyword_length = 0,
+          score_offset = 5,
+        },
+        buffer = {
+          -- show buffer words only when LSP gives nothing
+          min_keyword_length = 3,
+          score_offset = -5,
+          max_items = 5,
+        },
+        path = {
+          score_offset = 3,
+        },
       },
-      mapping = cmp.mapping.preset.insert({
-        ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-        ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-        ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-      }),
-      -- sources for autocompletion
-      sources = cmp.config.sources({
-        { name = "nvim_lsp"},
-
-        { name = "luasnip" }, -- snippets
-        { name = "buffer" }, -- text within current buffer
-        { name = "path" }, -- file system paths
-      }),
-
-      -- configure lspkind for vs-code like pictograms in completion menu
-      formatting = {
-        format = lspkind.cmp_format({
-          maxwidth = 50,
-          ellipsis_char = "...",
-        }),
+    },
+    snippets = {
+      preset = "luasnip",
+    },
+    completion = {
+      -- start completing immediately
+      trigger = {
+        show_on_insert_on_trigger_character = true,
+        show_on_keyword = true,
+        show_on_accept_on_trigger_character = true,
       },
-    })
-  end,
+      -- accept the completion and expand snippet in one step
+      accept = {
+        auto_brackets = { enabled = true },
+      },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 50,
+        update_delay_ms = 50,
+        window = {
+          border = "rounded",
+          max_width = 80,
+          max_height = 20,
+        },
+      },
+      ghost_text = {
+        enabled = true,
+        show_with_selection = true,
+      },
+      menu = {
+        min_width = 15,
+        max_height = 12,
+        border = "rounded",
+        draw = {
+          gap = 1,
+          columns = {
+            { "kind_icon", width = { fixed = 2 } },
+            { "label", "label_description", gap = 1 },
+            { "kind" },
+          },
+          components = {
+            kind_icon = {
+              ellipsis = false,
+              text = function(ctx)
+                return ctx.kind_icon .. ctx.icon_gap
+              end,
+              highlight = function(ctx)
+                return "BlinkCmpKind" .. ctx.kind
+              end,
+            },
+          },
+        },
+      },
+    },
+    signature = {
+      enabled = true,
+      trigger = {
+        show_on_insert_on_trigger_character = true,
+      },
+      window = {
+        border = "rounded",
+        max_height = 10,
+      },
+    },
+    fuzzy = {
+      use_typo_resistance = true,
+      use_proximity = true,
+      frecency = { enabled = true },
+      prebuilt_binaries = { download = true },
+    },
+  },
+  opts_extend = { "sources.default" },
 }

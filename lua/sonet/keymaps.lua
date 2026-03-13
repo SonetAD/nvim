@@ -69,7 +69,7 @@ keymap("n", "<leader>h", ":nohlsearch <cr>", {desc='Remove selected highlight'})
 
 -- Insert --
 -- Press jj fast to enter
-keymap("i", "jj", "<ESC>", {desc='Insert to Normal mode'})
+keymap("i", "jj", "<ESC>:w<CR>", {desc='Insert to Normal mode and save'})
 
 
 -- Visual --
